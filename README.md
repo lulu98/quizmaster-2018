@@ -1,1 +1,1 @@
-# quizmaster-2018
+# Quizmaster 2018
