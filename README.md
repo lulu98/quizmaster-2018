@@ -23,3 +23,8 @@ In the high score page, you can see the best highscore ever achieved and just al
 On this page, you can enter a new question, four possible answers and the index of the correct answer of those four. This information is passed to the database that holds the question data. By pressing the submit button, you enter the data in the database. The newly introduced question will be used randomly from now on in the quiz. Furthermore, you can return to the main menu or get information about the form. 
   
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/addNewQuestion.PNG)
+
+## Future extensions
+- fill the databases with many questions, so that it gets interesting  
+- user login and database, for not entering manually the name and more interesting high score field  
+- different topics like mathematics, History,... 
