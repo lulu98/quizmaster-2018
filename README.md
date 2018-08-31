@@ -9,11 +9,17 @@ The starting page gives you one of several choices. The first option leads you d
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/startPage.PNG)
 ## Main Page
 On the main page, you can see at the top from left to right, the question counter field, the total time that you had played the quiz so far and the time left for this question. Afterwards you will be asked a question and four possible answers. At the bottom, you also have the option to return straight to the main menu or continue with the next question. At the bottom right, you also see your current score. If you want to use voice control, just read the text written on the buttons. For the possible answers, you can either read out the character or the real logical answer. Both will work!  
+  
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/mainPage.PNG)
 ## Final Screen
 In the final screen, you can see the score and time it took for you to complete the quiz. This information is spoken by Zira as soon as you enter the page. Aftwerwards, you can enter your name and submit the data to the high score database. The other options are returning to the main menu, play again or go to the highscore page.  
+  
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/finalScreen.PNG)
 ## High Scores
+In the high score page, you can see the best highscore ever achieved and just all the scores in the database. You can return to the main menu if you get bored by it.  
+  
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/highScores.PNG)
 ## Add a new question
+On this page, you can enter a new question, four possible answers and the index of the correct answer of those four. This information is passed to the database that holds the question data. By pressing the submit button, you enter the data in the database. The newly introduced question will be used randomly from now on in the quiz. Furthermore, you can return to the main menu or get information about the form. 
+  
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/addNewQuestion.PNG)
