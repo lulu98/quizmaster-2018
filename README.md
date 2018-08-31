@@ -1,6 +1,11 @@
 # Quizmaster 2018
+# Starting Page
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/startPage.PNG)
+# Main Page
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/mainPage.PNG)
+# Final Screen
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/finalScreen.PNG)
+# High Scores
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/highScores.PNG)
+# Add a new question
 ![alt text](https://github.com/lulu98/quizmaster-2018/blob/master/addNewQuestion.PNG)
