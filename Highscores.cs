@@ -11,7 +11,9 @@ namespace Quiz
 {
     public partial class Highscores : Form
     {
-        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        System.Globalization.CultureInfo myCulture = null;
+        SpeechRecognitionEngine recEngine = null;
+        //SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
         Thread th;
         SqlConnection connection;
         string connectionString;
@@ -38,6 +40,7 @@ namespace Quiz
             commands.Add(actionCommands);
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
+            gBuilder.Culture = myCulture;
             Grammar grammar = new Grammar(gBuilder);
 
             recEngine.LoadGrammarAsync(grammar);
@@ -77,11 +80,13 @@ namespace Quiz
         public Highscores()
         {
             InitializeComponent();
+            myCulture = new System.Globalization.CultureInfo("en-US");
+            recEngine = new SpeechRecognitionEngine(myCulture);
             prepareSpeachRecognition();
             connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Projects\\Visual Studio\\Quiz\\Quiz\\Quiz.mdf;Integrated Security=True";
             //connectionString = ConfigurationManager.ConnectionStrings["Quiz.Properties.Settings.QuizConnectionString"].ConnectionString;
             preparePage();
-            this.Activate();
+            //this.Focus();
         }
 
         private void openStartPage(object obj)
@@ -97,5 +102,9 @@ namespace Quiz
             this.Close();
         }
 
+        private void Highscores_Load(object sender, EventArgs e)
+        {
+            this.Activate();
+        }
     }
 }

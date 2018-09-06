@@ -11,7 +11,9 @@ namespace Quiz
 {
     public partial class AddQuestion : Form
     {
-        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        System.Globalization.CultureInfo myCulture = null;
+        SpeechRecognitionEngine recEngine = null;
+        //SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
         SqlConnection connection;
         string connectionString;
@@ -27,6 +29,7 @@ namespace Quiz
             commands.Add(actionCommands);
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
+            gBuilder.Culture = myCulture;
             Grammar grammar = new Grammar(gBuilder);
 
             recEngine.LoadGrammarAsync(grammar);
@@ -60,11 +63,12 @@ namespace Quiz
         public AddQuestion()
         {
             InitializeComponent();
+            myCulture = new System.Globalization.CultureInfo("en-US");
+            recEngine = new SpeechRecognitionEngine(myCulture);
             //connectionString = ConfigurationManager.ConnectionStrings["Quiz.Properties.Settings.QuizConnectionString"].ConnectionString;
             connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Projects\\Visual Studio\\Quiz\\Quiz\\Quiz.mdf;Integrated Security=True";
             prepareSpeachRecognition();
             synthesizer.SelectVoice("Microsoft Zira Desktop");
-            this.Activate();
         }
 
         private void openStartPage(object obj)
@@ -111,6 +115,10 @@ namespace Quiz
             th.Start();
             this.Close();
         }
-        
+
+        private void AddQuestion_Load(object sender, EventArgs e)
+        {
+            this.Activate();
+        }
     }
 }

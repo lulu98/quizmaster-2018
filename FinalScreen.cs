@@ -10,7 +10,9 @@ namespace Quiz
 {
     public partial class FinalScreen : Form
     {
-        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        System.Globalization.CultureInfo myCulture = null;
+        SpeechRecognitionEngine recEngine = null;
+        //SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
         Thread th;
         SqlConnection connection;
@@ -44,6 +46,7 @@ namespace Quiz
             commands.Add(actionCommands);
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
+            gBuilder.Culture = myCulture;
             Grammar grammar = new Grammar(gBuilder);
 
             recEngine.LoadGrammarAsync(grammar);
@@ -55,10 +58,11 @@ namespace Quiz
         public FinalScreen()
         {
             InitializeComponent();
+            myCulture = new System.Globalization.CultureInfo("en-US");
+            recEngine = new SpeechRecognitionEngine(myCulture);
             connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Projects\\Visual Studio\\Quiz\\Quiz\\Quiz.mdf;Integrated Security=True";
             //connectionString = ConfigurationManager.ConnectionStrings["Quiz.Properties.Settings.QuizConnectionString"].ConnectionString;
             synthesizer.SelectVoice("Microsoft Zira Desktop");
-            this.Activate();
             finalScoreBox.Text = "Final score: " + MainPage.score + " / " + MainPage.questionTotal + " in " + MainPage.totalTime + " seconds";
             string informationString = "You have achieved " + MainPage.score + " out of " + MainPage.questionTotal + " points in " + MainPage.totalTime + " seconds.";
             synthesizer.SpeakAsync(informationString);
@@ -126,6 +130,11 @@ namespace Quiz
             th.SetApartmentState(ApartmentState.STA);
             th.Start();
             this.Close();
+        }
+
+        private void FinalScreen_Load(object sender, EventArgs e)
+        {
+            this.Activate();
         }
     }
 }

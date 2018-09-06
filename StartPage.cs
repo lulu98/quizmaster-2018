@@ -8,7 +8,10 @@ namespace Quiz
 {
     public partial class StartPage : Form
     {
-        SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
+        System.Globalization.CultureInfo myCulture = null;
+        SpeechRecognitionEngine recEngine = null;
+
+        //SpeechRecognitionEngine recEngine = new SpeechRecognitionEngine();
         SpeechSynthesizer synthesizer = new SpeechSynthesizer();
 
         Thread th;
@@ -16,12 +19,14 @@ namespace Quiz
         public StartPage()
         {
             InitializeComponent();
+            myCulture = new System.Globalization.CultureInfo("en-US");
+            recEngine = new SpeechRecognitionEngine(myCulture);
             synthesizer.SelectVoice("Microsoft Zira Desktop");
-            this.Activate();
         }
 
         private void StartPage_Load(object sender, EventArgs e)
         {
+            this.Activate();
             prepareSpeachRecognition();
         }
         
@@ -34,6 +39,7 @@ namespace Quiz
             commands.Add(actionCommands);
             GrammarBuilder gBuilder = new GrammarBuilder();
             gBuilder.Append(commands);
+            gBuilder.Culture = myCulture;
             Grammar grammar = new Grammar(gBuilder);
 
             recEngine.LoadGrammarAsync(grammar);
