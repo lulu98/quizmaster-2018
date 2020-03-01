@@ -1,5 +1,5 @@
 # Quizmaster 2018
-Demonstration video: https://music-transcription-software.000webhostapp.com/projects/voice_controlled_quiz.html
+Demonstration video: http://www.lukas-graber.tk/projects/voice_controlled_quiz.html
 ## Introduction
 This application is a quiz that you can control with either button pressing or by using your voice. 
 ## Technical aspects
